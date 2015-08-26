@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ConsoleApplication
+namespace DiarioAcademia.Dominio
 {
     public class Prova
     {
