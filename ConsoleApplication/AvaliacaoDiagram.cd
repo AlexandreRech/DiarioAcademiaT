@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ConsoleApplication.Avaliacao">
+  <Class Name="ConsoleApplication.Prova">
     <Position X="0.75" Y="1.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAEBEAAAAAABAAAAAAAAACAAA=</HashCode>
-      <FileName>Avaliacao.cs</FileName>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAACAAA=</HashCode>
+      <FileName>Prova.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Field Name="_notas" />
+      <Property Name="Notas" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="ConsoleApplication.Nota">

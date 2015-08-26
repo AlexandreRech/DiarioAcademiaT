@@ -12,14 +12,18 @@ namespace ConsoleApplication
 
         static void Main(string[] args)
         {
-            Avaliacao avaliacao = new Avaliacao(Hoje);
+            Prova prova = new Prova(Hoje);
 
-            avaliacao.LancarNota(8, new Aluno("João"));
-            avaliacao.LancarNota(10, new Aluno("José"));
-            avaliacao.LancarNota(5, new Aluno("Maria"));
+            prova.LancarNota(8, new Aluno("João"));
+            prova.LancarNota(10, new Aluno("José"));
+            prova.LancarNota(5, new Aluno("Maria"));
+
+            AvaliadorProva avaliador = new AvaliadorProva();
+
+            avaliador.Avaliar(prova);
 
             // imprimi 10
-            Console.WriteLine(avaliacao.ObtemMaiorNota());
+            Console.WriteLine(avaliador.ObtemMaiorNota());
 
             Console.ReadKey();
         }
