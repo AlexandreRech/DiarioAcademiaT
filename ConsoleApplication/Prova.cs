@@ -22,20 +22,6 @@ namespace ConsoleApplication
                 Notas = new List<Nota>();
 
             Notas.Add(nota);
-        }
-
-        /* Notas baixas e notas altas
-        public List<Nota> ObtemNotasBaixas()
-        {
-            return Notas.FindAll(n => n.Valor < 5);
-        }
-
-        public List<Nota> ObtemNotasBoas()
-        {
-            return Notas.FindAll(n => n.Valor >= 9);
-        }
-         */
-
-
+        }      
     }
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ConsoleApplication.Prova">
-    <Position X="0.75" Y="1.75" Width="1.75" />
+    <Position X="0.75" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAACAAA=</HashCode>
       <FileName>Prova.cs</FileName>
@@ -27,7 +27,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="ConsoleApplication.Aluno">
-    <Position X="7.5" Y="2.25" Width="2" />
+    <Position X="7.5" Y="2" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAAAAAAgAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Aluno.cs</FileName>
