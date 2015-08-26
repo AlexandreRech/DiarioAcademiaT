@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConsoleApplication.Avaliacao">
+    <Position X="0.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEBEAAAAAABAAAAAAAAACAAA=</HashCode>
+      <FileName>Avaliacao.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_notas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ConsoleApplication.Nota">
+    <Position X="4" Y="2" Width="2" />
+    <AssociationLine Name="Dono" Type="ConsoleApplication.Aluno" FixedFromPoint="true">
+      <Path>
+        <Point X="6" Y="3.375" />
+        <Point X="7.5" Y="3.375" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEAAAEAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Nota.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Dono" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ConsoleApplication.Aluno">
+    <Position X="7.5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAgAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Aluno.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_notas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
