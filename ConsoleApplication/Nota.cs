@@ -32,5 +32,10 @@ namespace DiarioAcademia.Dominio
             get;
             set;
         }
+
+        public override string ToString()
+        {
+            return Valor.ToString();
+        }
     }
 }

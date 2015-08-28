@@ -20,5 +20,10 @@ namespace DiarioAcademia.Dominio
         {
             _notas.Add(nota);
         }
+
+        public override string ToString()
+        {
+            return _nome;
+        }
     }
 }

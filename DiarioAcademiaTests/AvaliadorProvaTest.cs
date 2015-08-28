@@ -107,44 +107,32 @@ namespace DiarioAcademia.Dominio.Tests
 
             Assert.AreEqual(8, avaliador.ObtemMenorNota());
         }
+               
 
         [TestMethod]
-        public void Deveria_encontrar_as_melhores_notas()
+        public void Deveria_encontrar_as_3_piores_notas()
         {
             Prova prova = new Prova(DateTime.Now);
 
-            prova.LancarNota(8, new Aluno("João"));
-            prova.LancarNota(5, new Aluno("José"));
+            prova.LancarNota(1, new Aluno("João"));
+            prova.LancarNota(2, new Aluno("José"));
             prova.LancarNota(4, new Aluno("Maria"));
-            prova.LancarNota(9, new Aluno("João"));
-            prova.LancarNota(10, new Aluno("José"));
+            prova.LancarNota(3, new Aluno("João"));
+            prova.LancarNota(2, new Aluno("José"));
             prova.LancarNota(6, new Aluno("Maria"));
 
             AvaliadorProva avaliador = new AvaliadorProva();
 
             avaliador.Avaliar(prova);
 
-            Assert.AreEqual(2, avaliador.MelhoresNotas.Count);            
+            Assert.AreEqual(3, avaliador.PioresNotas.Count);
+
+            Assert.AreEqual(1, avaliador.PioresNotas[0].Valor);
+            Assert.AreEqual(2, avaliador.PioresNotas[1].Valor);
+            Assert.AreEqual(2, avaliador.PioresNotas[2].Valor);
         }
 
-        [TestMethod]
-        public void Deveria_encontrar_as_piores_notas()
-        {
-            Prova prova = new Prova(DateTime.Now);
 
-            prova.LancarNota(8, new Aluno("João"));
-            prova.LancarNota(5, new Aluno("José"));
-            prova.LancarNota(4, new Aluno("Maria"));
-            prova.LancarNota(9, new Aluno("João"));
-            prova.LancarNota(10, new Aluno("José"));
-            prova.LancarNota(6, new Aluno("Maria"));
-
-            AvaliadorProva avaliador = new AvaliadorProva();
-
-            avaliador.Avaliar(prova);
-
-            Assert.AreEqual(2, avaliador.PioresNotas.Count);
-        }
     }
 }
 
