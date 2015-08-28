@@ -12,14 +12,15 @@ namespace DiarioAcademia.Dominio.Tests
         {
             Prova prova = new Prova(DateTime.Now);
 
-            prova.LancarNota(5, new Aluno("Maria"));
+            prova.LancarNota(7, new Aluno("Maria"));
             prova.LancarNota(10, new Aluno("José"));
+            prova.LancarNota(4, new Aluno("José"));
 
             AvaliadorProva avaliador = new AvaliadorProva();
 
             avaliador.Avaliar(prova);
 
-            Assert.AreEqual(7.50, avaliador.ObtemMedia());
+            Assert.AreEqual(7, avaliador.ObtemMedia());
         }
 
         [TestMethod]

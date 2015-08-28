@@ -45,16 +45,16 @@ namespace DiarioAcademia.Dominio
             }
 
             CalcularMedia(prova.Notas.Count, somaNotas);
-            
+
             PioresNotas = ObtemPioresNotas(prova);
         }
 
         private List<Nota> ObtemPioresNotas(Prova prova)
         {
-            return prova.Notas.FindAll(x => x.Valor < 7)
+            return prova.Notas
                 .OrderBy(x => x.Valor)
                 .ToList()
-                .GetRange(0, 3);
+                .GetRange(0, prova.Notas.Count < 3 ? prova.Notas.Count : 3 );
         }
 
         private void CalcularMedia(int quantidadeProvas, double total)
@@ -82,7 +82,7 @@ namespace DiarioAcademia.Dominio
             return ((int)media) + decimais;
         }
 
-        
+
     }
 
     public class MediaNota
