@@ -11,7 +11,7 @@ namespace DiarioAcademia.Dominio
         private double _maiorNota = double.MinValue;
         private double _menorNota = double.MaxValue;
         private double _mediaNotas = 0;
-
+        
         public List<Nota> MelhoresNotas { get; private set; }
 
         public List<Nota> PioresNotas { get; private set; }
@@ -28,6 +28,9 @@ namespace DiarioAcademia.Dominio
 
         public void Avaliar(Prova prova)
         {
+            if (!prova.Notas.Any())
+                throw new InvalidOperationException("Não é possível avaliar uma prova sem notas");
+
             double somaNotas = 0;
 
             foreach (Nota nota in prova.Notas)
@@ -81,8 +84,6 @@ namespace DiarioAcademia.Dominio
 
             return ((int)media) + decimais;
         }
-
-
     }
 
     public class MediaNota

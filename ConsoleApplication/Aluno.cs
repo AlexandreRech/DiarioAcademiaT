@@ -25,5 +25,21 @@ namespace DiarioAcademia.Dominio
         {
             return _nome;
         }
+
+        public override bool Equals(object obj)
+        {
+            return this._nome == ((Aluno)obj)._nome;
+        }
+
+        public int Faltas { get; set; }
+
+        public string Nome { get { return _nome; } }
+
+        public bool EstaReprovado()
+        {
+            return Faltas > 5;
+        }
+
+       
     }
 }

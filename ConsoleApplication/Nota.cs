@@ -8,23 +8,22 @@ namespace DiarioAcademia.Dominio
 {
     public class Nota
     {
-        private Aluno aluno;
-
+       
         public Nota(double nota, Aluno aluno)
         {
             if (nota > 10 || nota < 0)
                 throw new ArgumentOutOfRangeException("nota", "Nota inválida");
 
             this.Valor = nota;
-            this.aluno = aluno;
+            this.Aluno = aluno;
 
-            aluno.ReceberAvaliacao(this);
+            Aluno.ReceberAvaliacao(this);
         }
 
-        public Aluno Dono
+        public Aluno Aluno
         {
             get;
-            set;
+            private set;
         }
 
         public double Valor

@@ -7,8 +7,8 @@
     <ProjectGuid>{87DD75BD-E9B9-4416-BD84-075729F896CC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleApplication</RootNamespace>
-    <AssemblyName>ConsoleApplication</AssemblyName>
+    <RootNamespace>DiarioAcademia.Dominio</RootNamespace>
+    <AssemblyName>DiarioAcademia.Dominio</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

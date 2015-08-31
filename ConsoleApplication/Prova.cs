@@ -8,6 +8,7 @@ namespace DiarioAcademia.Dominio
         public Prova(DateTime data)
         {
             Data = data;
+            Notas = new List<Nota>();
         }
 
         public DateTime Data { get; private set; }
@@ -16,12 +17,23 @@ namespace DiarioAcademia.Dominio
 
         public void LancarNota(double notaProva, Aluno aluno)
         {
+            if (NaoPodeLancarNotas(aluno))
+                return;
+
             Nota nota = new Nota(notaProva, aluno);
 
-            if (Notas == null)
-                Notas = new List<Nota>();
-
             Notas.Add(nota);
-        }      
+        }
+
+
+        private bool NaoPodeLancarNotas(Aluno aluno)
+        {
+            return NotaEstaLancada(aluno) || aluno.EstaReprovado();
+        }     
+
+        private bool NotaEstaLancada(Aluno aluno)
+        {
+            return Notas.Exists(n => n.Aluno.Equals(aluno));
+        }
     }
 }
