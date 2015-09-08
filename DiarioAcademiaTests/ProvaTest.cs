@@ -36,7 +36,7 @@ namespace DiarioAcademia.Dominio.Tests
         }
 
         [TestMethod]
-        public void Nao_deveria_lancar_2_notas_para_um_aluno()
+        public void Nao_deveria_lancar_2_notas_para_o_mesmo_aluno()
         {
             Prova prova = new Prova(DateTime.Now);
 
@@ -58,5 +58,7 @@ namespace DiarioAcademia.Dominio.Tests
             prova.Notas.Should().HaveCount(1);
             prova.Notas[0].Valor.Should().Be(9);
         }
+
+      
     }
 }

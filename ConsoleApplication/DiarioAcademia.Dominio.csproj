@@ -44,13 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Questao.cs" />
     <Compile Include="Aluno.cs" />
+    <Compile Include="Gabarito.cs" />
     <Compile Include="Prova.cs" />
     <Compile Include="Nota.cs" />
     <Compile Include="AvaliadorProva.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Gabarito.cd" />
     <None Include="ProvaDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

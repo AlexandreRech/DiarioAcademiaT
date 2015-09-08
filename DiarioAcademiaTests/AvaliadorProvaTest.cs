@@ -18,7 +18,7 @@ namespace DiarioAcademia.Dominio.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            avaliador = new AvaliadorProva();
+           avaliador = new AvaliadorProva();
             maria = new Aluno("Maria");
             jose = new Aluno("José");
             joao = new Aluno("João");
