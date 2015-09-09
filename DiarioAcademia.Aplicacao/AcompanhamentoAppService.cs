@@ -1,5 +1,5 @@
 ﻿using DiarioAcademia.Dominio;
-using DiarioAcademia.Infraestrutura;
+using DiarioAcademia.Infra.Dao;
 using System;
 using System.Collections.Generic;
 

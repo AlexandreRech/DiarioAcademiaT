@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 
-namespace DiarioAcademia.Infraestrutura
+namespace DiarioAcademia.Infra.Dao
 {
     public class ProvaDao
     {

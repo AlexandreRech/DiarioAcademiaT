@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiarioAcademia.Aplicacao", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiarioAcademia.Aplicacao.Tests", "DiarioAcademia.Aplicacao.Tests\DiarioAcademia.Aplicacao.Tests.csproj", "{8138AE52-3FE4-437E-A732-B94DF437AD42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiarioAcademia.Infraestrutura", "DiarioAcademia.Infraestrutura\DiarioAcademia.Infraestrutura.csproj", "{D650F5B8-4679-4FEA-AA13-82393449503F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiarioAcademia.Infra.Dao", "DiarioAcademia.Infraestrutura\DiarioAcademia.Infra.Dao.csproj", "{D650F5B8-4679-4FEA-AA13-82393449503F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

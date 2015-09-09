@@ -7,8 +7,8 @@
     <ProjectGuid>{D650F5B8-4679-4FEA-AA13-82393449503F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DiarioAcademia.Infraestrutura</RootNamespace>
-    <AssemblyName>DiarioAcademia.Infraestrutura</AssemblyName>
+    <RootNamespace>DiarioAcademia.Infra.Dao</RootNamespace>
+    <AssemblyName>DiarioAcademia.Infra.Dao</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

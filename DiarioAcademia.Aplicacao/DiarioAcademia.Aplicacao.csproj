@@ -52,9 +52,9 @@
       <Project>{87dd75bd-e9b9-4416-bd84-075729f896cc}</Project>
       <Name>DiarioAcademia.Dominio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DiarioAcademia.Infraestrutura\DiarioAcademia.Infraestrutura.csproj">
+    <ProjectReference Include="..\DiarioAcademia.Infraestrutura\DiarioAcademia.Infra.Dao.csproj">
       <Project>{d650f5b8-4679-4fea-aa13-82393449503f}</Project>
-      <Name>DiarioAcademia.Infraestrutura</Name>
+      <Name>DiarioAcademia.Infra.Dao</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
