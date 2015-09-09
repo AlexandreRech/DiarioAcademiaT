@@ -13,8 +13,9 @@ namespace DiarioAcademia.Dominio
             Notas = new List<Nota>();
         }
 
-        public Prova(DateTime data, Gabarito gabarito) : this(data)
-        {             
+        public Prova(DateTime data, Gabarito gabarito)
+            : this(data)
+        {
             this.Gabarito = gabarito;
         }
 
@@ -22,11 +23,13 @@ namespace DiarioAcademia.Dominio
 
         public List<Nota> Notas { get; private set; }
 
+        public bool FeedbackRealizado { get; set; }
+
         public void LancarNota(double notaProva, Aluno aluno)
         {
             if (NaoPodeLancarNota(aluno))
                 return;
-          
+
             Nota nota = new Nota(notaProva, aluno);
 
             Notas.Add(nota);
@@ -56,7 +59,9 @@ namespace DiarioAcademia.Dominio
             }
             return notaRegistrada;
         }
-    
+
+
+
 
        
     }

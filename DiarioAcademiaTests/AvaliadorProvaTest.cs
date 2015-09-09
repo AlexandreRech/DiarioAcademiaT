@@ -1,7 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DiarioAcademia.Dominio;
-using MSTestExtensions;
 using FluentAssertions;
 
 namespace DiarioAcademia.Dominio.Tests
