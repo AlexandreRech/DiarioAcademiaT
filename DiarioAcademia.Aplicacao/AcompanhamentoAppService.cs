@@ -1,4 +1,5 @@
 ﻿using DiarioAcademia.Dominio;
+using DiarioAcademia.Infraestrutura;
 using System;
 using System.Collections.Generic;
 
@@ -13,9 +14,9 @@ namespace DiarioAcademia.Aplicacao
         {
             ProvaDao dao = new ProvaDao();
 
-            List<Prova> provasCorrentes = dao.SelecionarProvasCorrentes();
+            List<Prova> provasSemFeedback = dao.SelecionarProvasSemFeedback();
 
-            foreach (Prova prova in provasCorrentes)
+            foreach (Prova prova in provasSemFeedback)
             {
                 if (AconteceuSemanaPassada(prova))
                 {
@@ -49,7 +50,7 @@ namespace DiarioAcademia.Aplicacao
 
             while (data < fim)
             {
-                data.AddDays(1);
+                data = data.AddDays(1);
 
                 diasNoIntervalo++;
             }

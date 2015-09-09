@@ -14,10 +14,7 @@ namespace DiarioAcademia.Aplicacao.Tests
             DateTime antiga = DateTime.Now.AddDays(-6);
 
             Prova prova1 = new Prova(antiga);
-            Prova prova2 = new Prova(antiga);
-
-            // mas como passo os leilões criados para o EncerradorDeLeilao,
-            // já que ele os busca no DAO?
+            Prova prova2 = new Prova(antiga);            
 
             AcompanhamentoAppService acompanhamento = new AcompanhamentoAppService();
 

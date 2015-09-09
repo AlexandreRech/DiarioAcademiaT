@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{06ABB3FF-2E02-40FA-9674-A52E72DA4C7D}</ProjectGuid>
+    <ProjectGuid>{D650F5B8-4679-4FEA-AA13-82393449503F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DiarioAcademia.Aplicacao</RootNamespace>
-    <AssemblyName>DiarioAcademia.Aplicacao</AssemblyName>
+    <RootNamespace>DiarioAcademia.Infraestrutura</RootNamespace>
+    <AssemblyName>DiarioAcademia.Infraestrutura</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,11 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,18 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AcompanhamentoAppService.cs" />
+    <Compile Include="Db.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvaDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsoleApplication\DiarioAcademia.Dominio.csproj">
       <Project>{87dd75bd-e9b9-4416-bd84-075729f896cc}</Project>
       <Name>DiarioAcademia.Dominio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DiarioAcademia.Infraestrutura\DiarioAcademia.Infraestrutura.csproj">
-      <Project>{d650f5b8-4679-4fea-aa13-82393449503f}</Project>
-      <Name>DiarioAcademia.Infraestrutura</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="table-prova.sql" />
+    <Content Include="insert-prova.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

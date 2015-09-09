@@ -11,6 +11,11 @@ namespace DiarioAcademia.Dominio
 
         private List<Questao> _questoes = new List<Questao>();
 
+        public Gabarito(string respostas) 
+            : this(respostas.ToCharArray())
+        {
+        }
+
         public Gabarito(params char[] respostas)
         {
             foreach (char resposta in respostas)

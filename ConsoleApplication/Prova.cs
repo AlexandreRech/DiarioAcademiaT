@@ -5,8 +5,6 @@ namespace DiarioAcademia.Dominio
 {
     public class Prova
     {
-        public Gabarito Gabarito { get; private set; }
-
         public Prova(DateTime data)
         {
             Data = data;
@@ -19,12 +17,18 @@ namespace DiarioAcademia.Dominio
             this.Gabarito = gabarito;
         }
 
+        public int Id { get; set; }
+
+        public Gabarito Gabarito { get; private set; }
+
         public DateTime Data { get; private set; }
 
         public List<Nota> Notas { get; private set; }
 
         public bool FeedbackRealizado { get; set; }
 
+        public string Assunto { get; set; }
+              
         public void LancarNota(double notaProva, Aluno aluno)
         {
             if (NaoPodeLancarNota(aluno))
@@ -58,11 +62,6 @@ namespace DiarioAcademia.Dominio
                 }
             }
             return notaRegistrada;
-        }
-
-
-
-
-       
+        }       
     }
 }

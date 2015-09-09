@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiarioAcademia.Dominio", "ConsoleApplication\DiarioAcademia.Dominio.csproj", "{87DD75BD-E9B9-4416-BD84-075729F896CC}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiarioAcademia.Aplicacao", "DiarioAcademia.Aplicacao\DiarioAcademia.Aplicacao.csproj", "{06ABB3FF-2E02-40FA-9674-A52E72DA4C7D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiarioAcademia.Aplicacao.Tests", "DiarioAcademia.Aplicacao.Tests\DiarioAcademia.Aplicacao.Tests.csproj", "{8138AE52-3FE4-437E-A732-B94DF437AD42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiarioAcademia.Infraestrutura", "DiarioAcademia.Infraestrutura\DiarioAcademia.Infraestrutura.csproj", "{D650F5B8-4679-4FEA-AA13-82393449503F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8138AE52-3FE4-437E-A732-B94DF437AD42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8138AE52-3FE4-437E-A732-B94DF437AD42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8138AE52-3FE4-437E-A732-B94DF437AD42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D650F5B8-4679-4FEA-AA13-82393449503F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D650F5B8-4679-4FEA-AA13-82393449503F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D650F5B8-4679-4FEA-AA13-82393449503F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D650F5B8-4679-4FEA-AA13-82393449503F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
