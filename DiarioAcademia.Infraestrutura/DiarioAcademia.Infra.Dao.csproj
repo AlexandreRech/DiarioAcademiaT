@@ -51,8 +51,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="table-prova.sql" />
-    <Content Include="insert-prova.sql" />
+    <Content Include="dctests-queries.sql" />
+    <Content Include="dctests-scripts.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

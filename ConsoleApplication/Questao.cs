@@ -16,11 +16,15 @@ namespace DiarioAcademia.Dominio
             this.resposta = resposta;
         }
 
+        public char Resposta { get { return resposta; } }
+
         public override bool Equals(object obj)
         {
             Questao questao = (Questao)obj;
 
             return questao.resposta == this.resposta;
         }
+
+
     }
 }

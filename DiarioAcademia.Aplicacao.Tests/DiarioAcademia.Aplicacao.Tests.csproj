@@ -70,6 +70,10 @@
       <Project>{06abb3ff-2e02-40fa-9674-a52e72da4c7d}</Project>
       <Name>DiarioAcademia.Aplicacao</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DiarioAcademia.Tests.Shared\DiarioAcademia.Tests.Shared.csproj">
+      <Project>{e420e47b-8e4a-4243-a9c0-932f590aae65}</Project>
+      <Name>DiarioAcademia.Tests.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

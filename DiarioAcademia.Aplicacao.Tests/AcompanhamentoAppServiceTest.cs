@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using FluentAssertions;
+using DiarioAcademia.Tests.Shared;
 
 namespace DiarioAcademia.Aplicacao.Tests
 {
@@ -13,8 +14,10 @@ namespace DiarioAcademia.Aplicacao.Tests
         {           
             DateTime antiga = DateTime.Now.AddDays(-6);
 
-            Prova prova1 = new Prova(antiga);
-            Prova prova2 = new Prova(antiga);            
+            Prova prova1 = new ProvaDataBuilder().NaData(antiga)
+                .ComNotaDe(new , 7).ComNotaDe(jose, 10).ComNotaDe(joao, 4)
+                .Build();
+            
 
             AcompanhamentoAppService acompanhamento = new AcompanhamentoAppService();
 

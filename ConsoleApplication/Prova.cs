@@ -29,19 +29,23 @@ namespace DiarioAcademia.Dominio
 
         public string Assunto { get; set; }
               
-        public void LancarNota(double notaProva, Aluno aluno)
+        public void LancarNota(Nota nota)
         {
-            if (NaoPodeLancarNota(aluno))
+            if (NaoPodeLancarNota(nota.Aluno))
                 return;
 
-            Nota nota = new Nota(notaProva, aluno);
+            nota.Prova = this;
 
             Notas.Add(nota);
         }
 
         public void LancarNota(Gabarito respostas, Aluno aluno)
         {
-            LancarNota(Gabarito.CalcularNota(respostas), aluno);
+            double valor = Gabarito.CalcularNota(respostas);
+
+            Nota nota = new Nota(valor, aluno);
+
+            LancarNota(nota);
         }
 
         private bool NaoPodeLancarNota(Aluno aluno)

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DiarioAcademia.Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DiarioAcademia.Dominio.Tests
+namespace DiarioAcademia.Tests.Shared
 {
     public class ProvaDataBuilder
     {
@@ -17,9 +18,9 @@ namespace DiarioAcademia.Dominio.Tests
             return this;
         }
 
-        public ProvaDataBuilder ComNotaDe(Aluno maria, int nota)
+        public ProvaDataBuilder ComNotaDe(Aluno aluno, double nota)
         {
-            prova.LancarNota(nota, maria);
+            prova.LancarNota(new Nota(nota, aluno));
 
             return this;
         }

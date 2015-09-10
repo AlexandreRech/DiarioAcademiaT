@@ -16,7 +16,7 @@ namespace DiarioAcademia.Dominio
             this._notas = new List<Nota>();
         }        
 
-        internal void ReceberAvaliacao(Nota nota)
+        public void ReceberAvaliacao(Nota nota)
         {
             _notas.Add(nota);
         }

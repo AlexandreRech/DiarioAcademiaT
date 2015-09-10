@@ -7,23 +7,37 @@ namespace DiarioAcademia.Infra.Dao
 {
     public class ProvaDao
     {
-        public List<Prova> SelecionarProvasSemFeedback()
+        public List<Prova> SelecionarProvasPendentesFeedback()
         {
-            string sql = "SELECT ID, DATA, ASSUNTO, FEEDBACKREALIZADO, GABARITO FROM TBPROVA WHERE FEEDBACKREALIZADO=FALSE";
+            string sqlProvas = "SELECT ID, DATA, ASSUNTO, FEEDBACK_REALIZADO, GABARITO FROM TBPROVA WHERE FEEDBACK_REALIZADO=0 ";
 
-            return Db.GetAll(sql, ConverterProva);
+            List<Prova> provas = Db.GetAll(sqlProvas, ConverterProva);
+
+            string sqlNotasAlunos = "SELECT P.ID ID_NOTA, P.VALOR VALOR_NOTA, A.ID ID_ALUNO, A.NOME NOME_ALUNO FROM TBNOTA P INNER JOIN TBALUNO A ON A.ID = P.ID_ALUNO WHERE P.ID_PROVA = {0}PROVA_ID";
+
+            foreach (Prova prova in provas)
+            {
+                List<Nota> notas = Db.GetAll(sqlNotasAlunos, ConverterNotaAluno, new object[] { "PROVA_ID", prova.Id });
+
+                foreach (Nota nota in notas)
+                {
+                    prova.LancarNota(nota);
+                }
+            }
+
+            return provas;
         }
 
-        public void Salvar(Prova prova) 
-        {            
-            string sql = "INSERT INTO TBPROVA (DATA, ASSUNTO, FEEDBACKREALIZADO, GABARITO) VALUES ({0}DATA, {0}ASSUNTO, {0}FEEDBACKREALIZADO, {0}GABARITO)";
-            
+        public void Salvar(Prova prova)
+        {
+            string sql = "INSERT INTO TBPROVA (DATA, ASSUNTO, FEEDBACK_REALIZADO, GABARITO) VALUES ({0}DATA, {0}ASSUNTO, {0}FEEDBACK_REALIZADO, {0}GABARITO)";
+
             Db.Insert(sql, Parametros(prova));
         }
 
-        public void Atualizar(Prova prova) 
+        public void Atualizar(Prova prova)
         {
-            string sql = "UPDATE TBPROVA SET DATA={0}DATA, ASSUNTO={0}ASSUNTO, FEEDBACKREALIZADO={0}FEEDBACKREALIZADO, GABARITO={0}GABARITO)";
+            string sql = "UPDATE TBPROVA SET DATA={0}DATA, ASSUNTO={0}ASSUNTO, FEEDBACK_REALIZADO={0}FEEDBACK_REALIZADO, GABARITO={0}GABARITO WHERE ID={0}ID";
 
             Db.Update(sql, Parametros(prova));
         }
@@ -36,8 +50,8 @@ namespace DiarioAcademia.Infra.Dao
                 "ID", prova.Id, 
                 "DATA", prova.Data, 
                 "ASSUNTO", prova.Assunto, 
-                "FEEDBACKREALIZADO", prova.FeedbackRealizado, 
-                "GABARITO", prova.Gabarito
+                "FEEDBACK_REALIZADO", prova.FeedbackRealizado, 
+                "GABARITO", prova.Gabarito.ToString()
             };
         }
 
@@ -46,7 +60,7 @@ namespace DiarioAcademia.Infra.Dao
             int id = Convert.ToInt32(reader["ID"]);
             DateTime data = Convert.ToDateTime(reader["DATA"]);
             string assunto = Convert.ToString(reader["ASSUNTO"]);
-            bool feedbackRealizado = Convert.ToBoolean(reader["FEEDBACKREALIZADO"]);
+            bool feedbackRealizado = Convert.ToBoolean(reader["FEEDBACK_REALIZADO"]);
             Gabarito gabarito = new Gabarito(Convert.ToString(reader["GABARITO"]));
 
             Prova prova = new Prova(data, gabarito);
@@ -56,6 +70,20 @@ namespace DiarioAcademia.Infra.Dao
 
             return prova;
         }
+
+        private Nota ConverterNotaAluno(IDataReader reader)
+        {
+            int idNota = Convert.ToInt32(reader["ID_NOTA"]);
+            double valorNota = Convert.ToDouble(reader["VALOR_NOTA"]);
+
+            int idAluno = Convert.ToInt32(reader["ID_ALUNO"]);
+            string nomeAluno = Convert.ToString(reader["NOME_ALUNO"]);
+
+            Nota nota = new Nota(valorNota, new Aluno(nomeAluno));
+
+            return nota;
+        }
+
         #endregion
     }
 }

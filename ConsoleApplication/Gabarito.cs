@@ -42,5 +42,10 @@ namespace DiarioAcademia.Dominio
 
             return quantidadeAcertos * valorQuestao;
         }
+
+        public override string ToString()
+        {
+            return string.Join("", _questoes.Select(q => q.Resposta).ToArray());
+        }
     }
 }

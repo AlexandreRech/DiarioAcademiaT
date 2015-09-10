@@ -8,7 +8,6 @@ namespace DiarioAcademia.Dominio
 {
     public class Nota
     {
-       
         public Nota(double nota, Aluno aluno)
         {
             if (nota > 10 || nota < 0)
@@ -27,6 +26,12 @@ namespace DiarioAcademia.Dominio
         }
 
         public double Valor
+        {
+            get;
+            private set;
+        }      
+
+        public Prova Prova
         {
             get;
             set;

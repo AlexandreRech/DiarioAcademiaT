@@ -1,6 +1,7 @@
 ﻿using DiarioAcademia.Dominio;
 using DiarioAcademia.Infra.Dao;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 
@@ -9,24 +10,39 @@ namespace DiarioAcademia.Aplicacao
     public class AcompanhamentoAppService
     {
         private int total = 0;
+        private NotificadorAppService _notificador;
+        private ProvaDao _dao;
+
+        public AcompanhamentoAppService()
+        {
+            _notificador = new NotificadorAppService();
+            _dao = new ProvaDao();
+        }
 
         public void RepassarFeedbackDasProvas()
         {
-            ProvaDao dao = new ProvaDao();
+            List<Prova> provasSemFeedback = _dao.SelecionarProvasPendentesFeedback();
 
-            List<Prova> provasSemFeedback = dao.SelecionarProvasSemFeedback();
+            List<FeedbackProva> feedbacks = new List<FeedbackProva>();
 
             foreach (Prova prova in provasSemFeedback)
             {
-                if (AconteceuSemanaPassada(prova))
+                if (AconteceuNesteMes(prova))
                 {
                     prova.FeedbackRealizado = true;
 
+                    _dao.Atualizar(prova);
+
                     total++;
 
-                    dao.Atualizar(prova);
+                    FeedbackProva feedback = new FeedbackProva(prova);
+
+                    feedbacks.Add(feedback);
                 }
             }
+
+            if(feedbacks.Any())
+                _notificador.Enviar(feedbacks);
         }
 
         public int TotalEncerrados
@@ -37,25 +53,11 @@ namespace DiarioAcademia.Aplicacao
             }
         }
 
-        private bool AconteceuSemanaPassada(Prova prova)
+        private bool AconteceuNesteMes(Prova prova)
         {
-            return DiasEntre(prova.Data, DateTime.Now) >= 7;
+            return prova.Data.Month == DateTime.Now.Month;
         }
 
-        private int DiasEntre(DateTime inicio, DateTime fim)
-        {
-            DateTime data = new DateTime(inicio.Ticks);
 
-            int diasNoIntervalo = 0;
-
-            while (data < fim)
-            {
-                data = data.AddDays(1);
-
-                diasNoIntervalo++;
-            }
-
-            return diasNoIntervalo;
-        }
     }
 }

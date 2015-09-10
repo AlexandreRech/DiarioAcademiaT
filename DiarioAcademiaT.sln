@@ -13,6 +13,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiarioAcademia.Aplicacao.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiarioAcademia.Infra.Dao", "DiarioAcademia.Infraestrutura\DiarioAcademia.Infra.Dao.csproj", "{D650F5B8-4679-4FEA-AA13-82393449503F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiarioAcademia.Tests.Shared", "DiarioAcademia.Tests.Shared\DiarioAcademia.Tests.Shared.csproj", "{E420E47B-8E4A-4243-A9C0-932F590AAE65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.1 Apresentação", "1.1 Apresentação", "{AA4BA178-EC23-4A6B-B0D7-73799B35F832}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.2 Aplicação", "1.2 Aplicação", "{0DDE3586-7BD8-489A-A13F-C75A293FBA9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.3 Domínio", "1.3 Domínio", "{40237CEE-5C38-40DB-9D9C-C3FAB2C6BC3E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.4 Infra", "1.4 Infra", "{7884FDAD-7896-498F-9CCD-26FFEBE61513}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,8 +49,19 @@ Global
 		{D650F5B8-4679-4FEA-AA13-82393449503F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D650F5B8-4679-4FEA-AA13-82393449503F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D650F5B8-4679-4FEA-AA13-82393449503F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E420E47B-8E4A-4243-A9C0-932F590AAE65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E420E47B-8E4A-4243-A9C0-932F590AAE65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E420E47B-8E4A-4243-A9C0-932F590AAE65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E420E47B-8E4A-4243-A9C0-932F590AAE65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87DD75BD-E9B9-4416-BD84-075729F896CC} = {40237CEE-5C38-40DB-9D9C-C3FAB2C6BC3E}
+		{2341D99F-D220-4280-833A-5CEA6DA6BA3E} = {40237CEE-5C38-40DB-9D9C-C3FAB2C6BC3E}
+		{06ABB3FF-2E02-40FA-9674-A52E72DA4C7D} = {0DDE3586-7BD8-489A-A13F-C75A293FBA9B}
+		{8138AE52-3FE4-437E-A732-B94DF437AD42} = {0DDE3586-7BD8-489A-A13F-C75A293FBA9B}
+		{D650F5B8-4679-4FEA-AA13-82393449503F} = {7884FDAD-7896-498F-9CCD-26FFEBE61513}
 	EndGlobalSection
 EndGlobal
