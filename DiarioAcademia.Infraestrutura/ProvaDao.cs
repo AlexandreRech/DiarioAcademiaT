@@ -79,7 +79,7 @@ namespace DiarioAcademia.Infra.Dao
             int idAluno = Convert.ToInt32(reader["ID_ALUNO"]);
             string nomeAluno = Convert.ToString(reader["NOME_ALUNO"]);
 
-            Nota nota = new Nota(valorNota, new Aluno(nomeAluno));
+            Nota nota = new Nota(valorNota, new Aluno(idAluno, nomeAluno));
 
             return nota;
         }

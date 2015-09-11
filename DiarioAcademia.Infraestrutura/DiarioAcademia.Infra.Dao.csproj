@@ -52,10 +52,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dctests-insert-queries.sql" />
-    <Content Include="dctests-select-queries.sql" />
-    <Content Include="dctests-delete-queries.sql" />
-    <Content Include="dctests-scripts.sql" />
+    <Content Include="Scripts\dctests-insert-queries.sql" />
+    <Content Include="Scripts\dctests-select-queries.sql" />
+    <Content Include="Scripts\dctests-delete-queries.sql" />
+    <Content Include="Scripts\dctests-scripts.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

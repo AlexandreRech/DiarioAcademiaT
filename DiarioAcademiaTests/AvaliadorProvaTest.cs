@@ -8,6 +8,7 @@ namespace DiarioAcademia.Dominio.Tests
     [TestClass]
     public class AvaliadorProvaTest
     {
+        #region atributos privados
         private AvaliadorProva avaliador;
         private Prova prova;
         private Aluno maria;
@@ -16,7 +17,7 @@ namespace DiarioAcademia.Dominio.Tests
         private Aluno luis;
         private Aluno pedro;
         private Aluno rafael;
-
+        #endregion
 
         [TestInitialize]
         public void TestInitialize()
@@ -29,28 +30,38 @@ namespace DiarioAcademia.Dominio.Tests
             pedro = new Aluno(5, "Pedro");
             rafael = new Aluno(6, "Rafael");
         }
-
+       
         [TestMethod]
-        public void Deveria_calcular_media_das_notas()
+        public void Deveria_arredondar_a_media_pra_baixo_caso_os_decimais_seja_menor_que_25()
         {
-            prova = new ProvaDataBuilder().Sobre("Portugues")
-                .ComNotaDe(maria, 7).ComNotaDe(jose, 10).ComNotaDe(joao, 4)
-                .Build();
+            prova = new ProvaDataBuilder().Sobre("Portugues").ComNotaDe(maria, 5)
+                            .ComNotaDe(jose, 0.5).ComNotaDe(joao, 10).Build();
 
             avaliador.Avaliar(prova);
 
-            Assert.AreEqual(7, avaliador.ObtemMedia());
+            Assert.AreEqual(5.0, avaliador.ObtemMedia());
         }
 
         [TestMethod]
-        public void Deveria_arredondar_a_media_das_notas()
+        public void Deveria_arredondar_a_media_pra_meio_ponto_caso_os_decimais_seja_menor_que_75()
         {
             prova = new ProvaDataBuilder().Sobre("Portugues").ComNotaDe(maria, 5)
-                             .ComNotaDe(jose, 8).ComNotaDe(joao, 10).Build();
+                           .ComNotaDe(jose, 8).ComNotaDe(joao, 10).Build();
 
             avaliador.Avaliar(prova);
 
-            Assert.AreEqual(7.50, avaliador.ObtemMedia());
+            Assert.AreEqual(7.5, avaliador.ObtemMedia());
+        }
+
+        [TestMethod]
+        public void Deveria_arredondar_a_media_pra_cima_caso_os_decimais_seja_maior_que_75()
+        {
+            prova = new ProvaDataBuilder().Sobre("Portugues").ComNotaDe(maria, 5)
+                            .ComNotaDe(jose, 8.5).ComNotaDe(joao, 10).Build();
+
+            avaliador.Avaliar(prova);
+
+            Assert.AreEqual(8.0, avaliador.ObtemMedia());
         }
 
         [TestMethod]
@@ -106,6 +117,18 @@ namespace DiarioAcademia.Dominio.Tests
 
             Assert.AreEqual(8, avaliador.ObtemMenorNota());
         }
+
+        [TestMethod]
+        public void Deveria_calcular_media_das_notas()
+        {
+            prova = new ProvaDataBuilder().Sobre("Portugues")
+                .ComNotaDe(maria, 7).ComNotaDe(jose, 10).ComNotaDe(joao, 4)
+                .Build();
+
+            avaliador.Avaliar(prova);
+
+            Assert.AreEqual(7, avaliador.ObtemMedia());
+        }      
 
         [TestMethod]
         public void Deveria_retornar_as_3_piores_notas()
