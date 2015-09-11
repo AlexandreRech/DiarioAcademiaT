@@ -41,6 +41,9 @@
     <Reference Include="FluentAssertions.Core">
       <HintPath>..\packages\FluentAssertions.4.0.0\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1507.0118\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -69,6 +72,10 @@
     <ProjectReference Include="..\DiarioAcademia.Aplicacao\DiarioAcademia.Aplicacao.csproj">
       <Project>{06abb3ff-2e02-40fa-9674-a52e72da4c7d}</Project>
       <Name>DiarioAcademia.Aplicacao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DiarioAcademia.Infraestrutura\DiarioAcademia.Infra.Dao.csproj">
+      <Project>{d650f5b8-4679-4fea-aa13-82393449503f}</Project>
+      <Name>DiarioAcademia.Infra.Dao</Name>
     </ProjectReference>
     <ProjectReference Include="..\DiarioAcademia.Tests.Shared\DiarioAcademia.Tests.Shared.csproj">
       <Project>{e420e47b-8e4a-4243-a9c0-932f590aae65}</Project>

@@ -11,9 +11,18 @@ namespace DiarioAcademia.Tests.Shared
 
         Prova prova = null;
 
+        public ProvaDataBuilder Sobre(string assunto)
+        {
+            prova = new Prova( DateTime.Now );
+
+            prova.Assunto = assunto;
+
+            return this;
+        }
+
         public ProvaDataBuilder NaData(DateTime data)
         {
-            prova = new Prova(data);
+            prova.Data = data;
 
             return this;
         }
@@ -29,5 +38,7 @@ namespace DiarioAcademia.Tests.Shared
         {
             return prova;
         }
+
+       
     }
 }

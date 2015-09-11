@@ -13,10 +13,10 @@ namespace DiarioAcademia.Aplicacao
         private NotificadorAppService _notificador;
         private ProvaDao _dao;
 
-        public AcompanhamentoAppService()
+        public AcompanhamentoAppService(ProvaDao dao)
         {
             _notificador = new NotificadorAppService();
-            _dao = new ProvaDao();
+            _dao = dao;
         }
 
         public void RepassarFeedbackDasProvas()

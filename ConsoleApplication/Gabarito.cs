@@ -45,7 +45,10 @@ namespace DiarioAcademia.Dominio
 
         public override string ToString()
         {
-            return string.Join("", _questoes.Select(q => q.Resposta).ToArray());
+            if(_questoes.Any())
+                return string.Join("", _questoes.Select(q => q.Resposta).ToArray());
+
+            return "";
         }
     }
 }

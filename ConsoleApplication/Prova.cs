@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace DiarioAcademia.Dominio
 {
     public class Prova
-    {
+    {       
         public Prova(DateTime data)
         {
             Data = data;
@@ -21,7 +21,7 @@ namespace DiarioAcademia.Dominio
 
         public Gabarito Gabarito { get; private set; }
 
-        public DateTime Data { get; private set; }
+        public DateTime Data { get; set; }
 
         public List<Nota> Notas { get; private set; }
 

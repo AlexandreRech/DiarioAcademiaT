@@ -14,7 +14,14 @@ namespace DiarioAcademia.Dominio
         {
             this._nome = nome;
             this._notas = new List<Nota>();
-        }        
+        }
+
+        public Aluno(int id, string nome)
+        {
+            this.Id = id;
+            this._nome = nome;
+            this._notas = new List<Nota>();
+        } 
 
         public void ReceberAvaliacao(Nota nota)
         {
@@ -28,7 +35,7 @@ namespace DiarioAcademia.Dominio
 
         public override bool Equals(object obj)
         {
-            return this._nome == ((Aluno)obj)._nome;
+            return this.Id == ((Aluno)obj).Id;
         }
 
         public int Faltas { get; set; }
@@ -40,6 +47,6 @@ namespace DiarioAcademia.Dominio
             return Faltas > 5;
         }
 
-       
+        public int Id { get; set; }
     }
 }

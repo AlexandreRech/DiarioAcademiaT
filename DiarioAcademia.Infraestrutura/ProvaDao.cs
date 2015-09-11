@@ -7,7 +7,7 @@ namespace DiarioAcademia.Infra.Dao
 {
     public class ProvaDao
     {
-        public List<Prova> SelecionarProvasPendentesFeedback()
+        public virtual List<Prova> SelecionarProvasPendentesFeedback()
         {
             string sqlProvas = "SELECT ID, DATA, ASSUNTO, FEEDBACK_REALIZADO, GABARITO FROM TBPROVA WHERE FEEDBACK_REALIZADO=0 ";
 
@@ -51,7 +51,7 @@ namespace DiarioAcademia.Infra.Dao
                 "DATA", prova.Data, 
                 "ASSUNTO", prova.Assunto, 
                 "FEEDBACK_REALIZADO", prova.FeedbackRealizado, 
-                "GABARITO", prova.Gabarito.ToString()
+                "GABARITO", prova.Gabarito == null ? "" : prova.Gabarito.ToString()
             };
         }
 
@@ -85,5 +85,14 @@ namespace DiarioAcademia.Infra.Dao
         }
 
         #endregion
+
+        public List<Prova> SelecionarProvasComFeedback()
+        {
+            string sqlProvas = "SELECT ID, DATA, ASSUNTO, FEEDBACK_REALIZADO, GABARITO FROM TBPROVA WHERE FEEDBACK_REALIZADO=1";
+
+            List<Prova> provas = Db.GetAll(sqlProvas, ConverterProva);
+
+            return provas;
+        }
     }
 }
