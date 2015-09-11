@@ -11,7 +11,7 @@ namespace DiarioAcademia.Dominio.Tests
     [TestClass]
     public class GabaritoTest
     {
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_calcular_nota_do_aluno_atraves_do_gabarito()
         {
             Gabarito gabarito = new Gabarito('A', 'A', 'C', 'D', 'B');

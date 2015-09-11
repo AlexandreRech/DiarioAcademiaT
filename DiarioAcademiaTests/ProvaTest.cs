@@ -11,7 +11,7 @@ namespace DiarioAcademia.Dominio.Tests
     [TestClass]
     public class ProvaTest
     {
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_receber_um_lancamento_de_nota()
         {
             Prova prova = new Prova(DateTime.Now);
@@ -22,7 +22,7 @@ namespace DiarioAcademia.Dominio.Tests
             prova.Notas[0].Valor.Should().Be(10);
         }
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_receber_varios_lancamentos_de_notas()
         {
             Prova prova = new Prova(DateTime.Now);
@@ -35,7 +35,7 @@ namespace DiarioAcademia.Dominio.Tests
             prova.Notas[1].Valor.Should().Be(10);
         }
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Nao_deveria_lancar_2_notas_para_o_mesmo_aluno()
         {
             Prova prova = new Prova(DateTime.Now);
@@ -47,7 +47,7 @@ namespace DiarioAcademia.Dominio.Tests
             prova.Notas[0].Valor.Should().Be(10);
         }
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Nao_deveria_lancar_nota_para_alunos_reprovados_por_falta()
         {
             Prova prova = new Prova(DateTime.Now);

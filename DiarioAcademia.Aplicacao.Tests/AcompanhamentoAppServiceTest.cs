@@ -12,7 +12,7 @@ namespace DiarioAcademia.Aplicacao.Tests
     [TestClass]
     public class AcompanhamentoAppServiceTest
     {
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_realizar_feedback_das_provas()
         {
             DateTime antiga = DateTime.Now.AddDays(-6);

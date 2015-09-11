@@ -31,7 +31,7 @@ namespace DiarioAcademia.Dominio.Tests
             rafael = new Aluno(6, "Rafael");
         }
        
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_arredondar_a_media_pra_baixo_caso_os_decimais_seja_menor_que_25()
         {
             prova = new ProvaDataBuilder().Sobre("Portugues").ComNotaDe(maria, 5)
@@ -42,7 +42,7 @@ namespace DiarioAcademia.Dominio.Tests
             Assert.AreEqual(5.0, avaliador.ObtemMedia());
         }
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_arredondar_a_media_pra_meio_ponto_caso_os_decimais_seja_menor_que_75()
         {
             prova = new ProvaDataBuilder().Sobre("Portugues").ComNotaDe(maria, 5)
@@ -53,7 +53,7 @@ namespace DiarioAcademia.Dominio.Tests
             Assert.AreEqual(7.5, avaliador.ObtemMedia());
         }
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_arredondar_a_media_pra_cima_caso_os_decimais_seja_maior_que_75()
         {
             prova = new ProvaDataBuilder().Sobre("Portugues").ComNotaDe(maria, 5)
@@ -64,7 +64,7 @@ namespace DiarioAcademia.Dominio.Tests
             Assert.AreEqual(8.0, avaliador.ObtemMedia());
         }
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_avaliar_notas_ordem_crescente()
         {
             prova = new ProvaDataBuilder().Sobre("Portugues").ComNotaDe(maria, 5)
@@ -78,7 +78,7 @@ namespace DiarioAcademia.Dominio.Tests
             Assert.AreEqual(5, avaliador.ObtemMenorNota());
         }
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_avaliar_notas_ordem_decrescente()
         {
             prova = new ProvaDataBuilder().Sobre("Portugues").ComNotaDe(maria, 10)
@@ -92,7 +92,7 @@ namespace DiarioAcademia.Dominio.Tests
             Assert.AreEqual(5, avaliador.ObtemMenorNota());
         }
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_avaliar_notas_aleatorias()
         {
             prova = new ProvaDataBuilder().Sobre("Portugues").ComNotaDe(maria, 8)
@@ -105,7 +105,7 @@ namespace DiarioAcademia.Dominio.Tests
             Assert.AreEqual(5, avaliador.ObtemMenorNota());
         }
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_avaliar_prova_com_apenas_uma_nota()
         {
             prova = new ProvaDataBuilder()
@@ -118,7 +118,7 @@ namespace DiarioAcademia.Dominio.Tests
             Assert.AreEqual(8, avaliador.ObtemMenorNota());
         }
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_calcular_media_das_notas()
         {
             prova = new ProvaDataBuilder().Sobre("Portugues")
@@ -130,7 +130,7 @@ namespace DiarioAcademia.Dominio.Tests
             Assert.AreEqual(7, avaliador.ObtemMedia());
         }      
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_retornar_as_3_piores_notas()
         {
 
@@ -148,7 +148,7 @@ namespace DiarioAcademia.Dominio.Tests
             avaliador.PioresNotas[2].Valor.Should().Be(3);
         }
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_retornar_todas_as_notas_caso_nao_haja_no_minimo_3()
         {
             prova = new ProvaDataBuilder().Sobre("Portugues").ComNotaDe(joao, 1).ComNotaDe(jose, 2).Build();
@@ -161,7 +161,7 @@ namespace DiarioAcademia.Dominio.Tests
             Assert.AreEqual(2, avaliador.PioresNotas[1].Valor);
         }
 
-        [TestMethod]
+        [TestMethod(), TestCategory("Unit Tests")]
         public void Nao_deveria_avaliar_prova_sem_lancamento_de_notas()
         {
             prova = new ProvaDataBuilder().Sobre("Portugues").Build();
