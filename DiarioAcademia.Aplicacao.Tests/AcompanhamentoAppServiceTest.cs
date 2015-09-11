@@ -41,6 +41,8 @@ namespace DiarioAcademia.Aplicacao.Tests
             acompanhamento.TotalEncerrados.Should().Be(2);
             prova1.FeedbackRealizado.Should().BeTrue();
             prova2.FeedbackRealizado.Should().BeTrue();
+
+            
         }
     }
 }
