@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DiarioAcademia.Dominio
+namespace DiarioAcademia.Dominio.AvaliacaoModule
 {
     public class Aluno
     {
-        public List<Nota> Notas { get; set; }
+        public List<NotaProva> Notas { get; set; }
 
         public Aluno(int id, string nome)
         {
             this.Id = id;
             this.Nome = nome;
-            Notas = new List<Nota>();
+            Notas = new List<NotaProva>();
         }         
 
         public int Id { get; set; }
@@ -22,7 +22,7 @@ namespace DiarioAcademia.Dominio
 
         public int Faltas { get; set; }
       
-        public void ReceberAvaliacao(Nota nota)
+        public void ReceberAvaliacao(NotaProva nota)
         {
             Notas.Add(nota);
         }

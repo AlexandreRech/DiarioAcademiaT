@@ -3,30 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DiarioAcademia.Dominio
+namespace DiarioAcademia.Dominio.AvaliacaoModule
 {
-    public class Gabarito
+    public class GabaritoProva
     {
         private static int CONTADOR = 0;
 
-        private List<Questao> _questoes = new List<Questao>();
+        private List<QuestaoGabarito> _questoes = new List<QuestaoGabarito>();
 
-        public Gabarito(string respostas) 
+        public GabaritoProva(string respostas) 
             : this(respostas.ToCharArray())
         {
         }
 
-        public Gabarito(params char[] respostas)
+        public GabaritoProva(params char[] respostas)
         {
             foreach (char resposta in respostas)
             {
-                Questao questao = new Questao(++CONTADOR, resposta);
+                QuestaoGabarito questao = new QuestaoGabarito(++CONTADOR, resposta);
 
                 _questoes.Add(questao);
             }
         }
 
-        public double CalcularNota(Gabarito respostas)
+        public double CalcularNota(GabaritoProva respostas)
         {
             double quantidadeAcertos = 0;
 

@@ -44,18 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FeedbackProva.cs" />
-    <Compile Include="Questao.cs" />
-    <Compile Include="Aluno.cs" />
-    <Compile Include="Gabarito.cs" />
-    <Compile Include="Prova.cs" />
-    <Compile Include="Nota.cs" />
-    <Compile Include="AvaliadorProva.cs" />
+    <Compile Include="AvaliacaoModule\FeedbackProva.cs" />
+    <Compile Include="AvaliacaoModule\IRepositorioFeedback.cs" />
+    <Compile Include="AvaliacaoModule\IRepositorioProva.cs" />
+    <Compile Include="AvaliacaoModule\MediaNota.cs" />
+    <Compile Include="AvaliacaoModule\NenhumaProvaEncontradaException.cs" />
+    <Compile Include="AvaliacaoModule\QuestaoGabarito.cs" />
+    <Compile Include="AlunoModule\Aluno.cs" />
+    <Compile Include="AvaliacaoModule\GabaritoProva.cs" />
+    <Compile Include="AvaliacaoModule\Prova.cs" />
+    <Compile Include="AvaliacaoModule\NotaProva.cs" />
+    <Compile Include="AvaliacaoModule\AvaliadorProva.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Gabarito.cd" />
-    <None Include="ProvaDiagram.cd" />
+    <Folder Include="AulaModule\" />
+    <Folder Include="FrequenciaModule\" />
+    <Folder Include="TurmaModule\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

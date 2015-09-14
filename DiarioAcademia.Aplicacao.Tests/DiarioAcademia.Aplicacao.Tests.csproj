@@ -61,7 +61,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AcompanhamentoAppServiceTest.cs" />
+    <Compile Include="FeedbackServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,9 +73,9 @@
       <Project>{06abb3ff-2e02-40fa-9674-a52e72da4c7d}</Project>
       <Name>DiarioAcademia.Aplicacao</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DiarioAcademia.Infraestrutura\DiarioAcademia.Infra.Dao.csproj">
+    <ProjectReference Include="..\DiarioAcademia.Infraestrutura\DiarioAcademia.Infra.csproj">
       <Project>{d650f5b8-4679-4fea-aa13-82393449503f}</Project>
-      <Name>DiarioAcademia.Infra.Dao</Name>
+      <Name>DiarioAcademia.Infra</Name>
     </ProjectReference>
     <ProjectReference Include="..\DiarioAcademia.Tests.Shared\DiarioAcademia.Tests.Shared.csproj">
       <Project>{e420e47b-8e4a-4243-a9c0-932f590aae65}</Project>

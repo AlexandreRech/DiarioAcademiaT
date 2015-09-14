@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DiarioAcademia.Dominio
+namespace DiarioAcademia.Dominio.AvaliacaoModule
 {
     public class Prova
     {       
         public Prova(DateTime data)
         {
             Data = data;
-            Notas = new List<Nota>();
+            Notas = new List<NotaProva>();
         }
 
-        public Prova(DateTime data, Gabarito gabarito)
+        public Prova(DateTime data, GabaritoProva gabarito)
             : this(data)
         {
             this.Gabarito = gabarito;
@@ -19,17 +19,17 @@ namespace DiarioAcademia.Dominio
 
         public int Id { get; set; }
 
-        public Gabarito Gabarito { get; private set; }
+        public GabaritoProva Gabarito { get; private set; }
 
         public DateTime Data { get; set; }
 
-        public List<Nota> Notas { get; private set; }
+        public List<NotaProva> Notas { get; private set; }
 
         public bool FeedbackRealizado { get; set; }
 
         public string Assunto { get; set; }
               
-        public void LancarNota(Nota nota)
+        public void LancarNota(NotaProva nota)
         {
             if (NaoPodeLancarNota(nota.Aluno))
                 return;
@@ -39,11 +39,11 @@ namespace DiarioAcademia.Dominio
             Notas.Add(nota);
         }
 
-        public void LancarNota(Gabarito respostas, Aluno aluno)
+        public void LancarNota(GabaritoProva respostas, Aluno aluno)
         {
             double valor = Gabarito.CalcularNota(respostas);
 
-            Nota nota = new Nota(valor, aluno);
+            NotaProva nota = new NotaProva(valor, aluno);
 
             LancarNota(nota);
         }
@@ -57,7 +57,7 @@ namespace DiarioAcademia.Dominio
         {
             bool notaRegistrada = false;
 
-            foreach (Nota n in Notas)
+            foreach (NotaProva n in Notas)
             {
                 if (n.Aluno.Equals(aluno))
                 {

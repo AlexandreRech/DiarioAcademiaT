@@ -1,4 +1,4 @@
-﻿using DiarioAcademia.Dominio;
+﻿using DiarioAcademia.Dominio.AvaliacaoModule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace DiarioAcademia.Tests.Shared
 
         public ProvaDataBuilder ComNotaDe(Aluno aluno, double nota)
         {
-            prova.LancarNota(new Nota(nota, aluno));
+            prova.LancarNota(new NotaProva(nota, aluno));
 
             return this;
         }

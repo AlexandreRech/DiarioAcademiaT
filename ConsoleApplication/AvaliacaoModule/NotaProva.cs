@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiarioAcademia.Dominio
+namespace DiarioAcademia.Dominio.AvaliacaoModule
 {
-    public class Nota
+    public class NotaProva
     {
-        public Nota(double nota, Aluno aluno)
+        public NotaProva(double nota, Aluno aluno)
         {
             if (nota > 10 || nota < 0)
                 throw new ArgumentOutOfRangeException("nota", "Nota inválida");

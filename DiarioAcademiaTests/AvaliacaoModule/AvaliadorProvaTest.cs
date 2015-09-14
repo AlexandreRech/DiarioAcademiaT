@@ -3,7 +3,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
 using DiarioAcademia.Tests.Shared;
 
-namespace DiarioAcademia.Dominio.Tests
+using FizzWare.NBuilder;
+
+namespace DiarioAcademia.Dominio.AvaliacaoModule.Tests
 {
     [TestClass]
     public class AvaliadorProvaTest
@@ -119,7 +121,7 @@ namespace DiarioAcademia.Dominio.Tests
         }
 
         [TestMethod(), TestCategory("Unit Tests")]
-        public void Deveria_calcular_media_das_notas()
+        public void Deveria_calcular_media_das_notas_na_prova()
         {
             prova = new ProvaDataBuilder().Sobre("Portugues")
                 .ComNotaDe(maria, 7).ComNotaDe(jose, 10).ComNotaDe(joao, 4)
@@ -165,10 +167,11 @@ namespace DiarioAcademia.Dominio.Tests
         public void Nao_deveria_avaliar_prova_sem_lancamento_de_notas()
         {
             prova = new ProvaDataBuilder().Sobre("Portugues").Build();
-
+          
             Action sut = () => avaliador.Avaliar(prova);
 
             sut.ShouldThrow<InvalidOperationException>();
         }
+
     }
 }

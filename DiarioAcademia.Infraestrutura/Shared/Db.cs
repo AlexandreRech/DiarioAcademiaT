@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace DiarioAcademia.Infra.Dao
+namespace DiarioAcademia.Infra.Shared
 {
     public delegate T ConverterDelegate<T>(IDataReader reader);
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{D650F5B8-4679-4FEA-AA13-82393449503F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DiarioAcademia.Infra.Dao</RootNamespace>
-    <AssemblyName>DiarioAcademia.Infra.Dao</AssemblyName>
+    <RootNamespace>DiarioAcademia.Infra</RootNamespace>
+    <AssemblyName>DiarioAcademia.Infra</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,10 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Db.cs" />
+    <Compile Include="AvaliacaoModule\Arquivo\GeradorFeedback.cs" />
+    <Compile Include="Shared\Db.cs" />
+    <Compile Include="AvaliacaoModule\Email\EmissorFeedback.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProvaDao.cs" />
-    <Compile Include="ProvaDaoFalso.cs" />
+    <Compile Include="AvaliacaoModule\Dao\ProvaDao.cs" />
+    <Compile Include="AvaliacaoModule\Dao\ProvaDaoFalso.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsoleApplication\DiarioAcademia.Dominio.csproj">
@@ -52,11 +54,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\dctests-insert-queries.sql" />
-    <Content Include="Scripts\dctests-select-queries.sql" />
-    <Content Include="Scripts\dctests-delete-queries.sql" />
-    <Content Include="Scripts\dctests-scripts.sql" />
+    <Content Include="AvaliacaoModule\Dao\Scripts\dctests-insert-queries.sql" />
+    <Content Include="AvaliacaoModule\Dao\Scripts\dctests-select-queries.sql" />
+    <Content Include="AvaliacaoModule\Dao\Scripts\dctests-delete-queries.sql" />
+    <Content Include="AvaliacaoModule\Dao\Scripts\dctests-scripts.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

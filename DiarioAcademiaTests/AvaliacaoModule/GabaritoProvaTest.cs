@@ -6,17 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 
-namespace DiarioAcademia.Dominio.Tests
+namespace DiarioAcademia.Dominio.AvaliacaoModule.Tests
 {        
     [TestClass]
-    public class GabaritoTest
+    public class GabaritoProvaTest
     {
         [TestMethod(), TestCategory("Unit Tests")]
         public void Deveria_calcular_nota_do_aluno_atraves_do_gabarito()
         {
-            Gabarito gabarito = new Gabarito('A', 'A', 'C', 'D', 'B');
+            GabaritoProva gabarito = new GabaritoProva('A', 'A', 'C', 'D', 'B');
            
-            double nota = gabarito.CalcularNota(new Gabarito('A', 'A', 'C', 'D', 'C'));
+            double nota = gabarito.CalcularNota(new GabaritoProva('A', 'A', 'C', 'D', 'C'));
 
             nota.Should().Be(8);
         }
