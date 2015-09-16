@@ -25,7 +25,7 @@ namespace DiarioAcademia.Dominio.AvaliacaoModule
 
         public List<NotaProva> Notas { get; private set; }
 
-        public bool FeedbackRealizado { get; set; }
+        public FeedbackEnum Feedback { get; set; }
 
         public string Assunto { get; set; }
               

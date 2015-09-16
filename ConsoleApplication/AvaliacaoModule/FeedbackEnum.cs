@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace DiarioAcademia.Dominio.AvaliacaoModule
 {
-    public interface IRepositorioFeedback
-    {
-        void SalvarPdf(FeedbackProva feedback);
+    public enum FeedbackEnum : int
+    {        
+        Pendente = 0,
+        Realizado = 1
     }
+
+    
 }

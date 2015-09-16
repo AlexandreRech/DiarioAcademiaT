@@ -14,7 +14,7 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Dao
         public List<Prova> SelecionarProvasPendentesFeedback(int mes, int ano)
         {
             return _provas
-                .Where(x => x.FeedbackRealizado == false)
+                .Where(x => x.Feedback == FeedbackEnum.Pendente)
                 .Where(x => x.Data.Month == mes)
                 .Where(x => x.Data.Year == ano)
                 .ToList();
@@ -23,7 +23,7 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Dao
         public List<Prova> SelecionarProvasFeedbackRealizado(int mes, int ano)
         {
             return _provas
-             .Where(x => x.FeedbackRealizado == true)
+             .Where(x => x.Feedback == FeedbackEnum.Realizado)
              .Where(x => x.Data.Month == mes)
              .Where(x => x.Data.Year == ano)
              .ToList();

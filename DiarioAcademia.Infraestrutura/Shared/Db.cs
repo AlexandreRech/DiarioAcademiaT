@@ -22,13 +22,13 @@ namespace DiarioAcademia.Infra.Shared
         static Db()
         {
             connectionString = ConfigurationManager.ConnectionStrings["DiarioAcademiaDb"].ConnectionString;
-            
+
             providerName = ConfigurationManager.ConnectionStrings["DiarioAcademiaDb"].ProviderName;
-            
+
             factory = DbProviderFactories.GetFactory(providerName);
         }
 
-        public static int Insert(string sql, object[] parms = null)
+        public static int Insert(string sql, object[] parms = null, DbTransaction transaction = null)
         {
             sql = string.Format(sql, GetParameterPrefix());
 
@@ -44,6 +44,11 @@ namespace DiarioAcademia.Infra.Shared
 
                     connection.Open();
 
+                    if (transaction != null)
+                    {
+                        command.Transaction = transaction;
+                    }
+
                     int id = Convert.ToInt32(command.ExecuteScalar());
 
                     return id;
@@ -51,7 +56,7 @@ namespace DiarioAcademia.Infra.Shared
             }
         }
 
-        public static void Update(string sql, object[] parms = null)
+        public static void Update(string sql, object[] parms = null, DbTransaction transaction = null)
         {
             sql = string.Format(sql, GetParameterPrefix());
 
@@ -66,14 +71,20 @@ namespace DiarioAcademia.Infra.Shared
                     command.SetParameters(parms);
 
                     connection.Open();
+
+                    if (transaction != null)
+                    {
+                        command.Transaction = transaction;
+                    }
+
                     command.ExecuteNonQuery();
                 }
             }
         }
 
-        public static void Delete(string sql, object[] parms = null)
+        public static void Delete(string sql, object[] parms = null, DbTransaction transaction = null)
         {
-            Update(sql, parms);
+            Update(sql, parms, transaction);
         }
 
         public static List<T> GetAll<T>(string sql, ConverterDelegate<T> convert, object[] parms = null)
@@ -188,5 +199,6 @@ namespace DiarioAcademia.Infra.Shared
         }
 
         #endregion Private methods
+
     }
 }

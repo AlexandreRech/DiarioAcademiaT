@@ -3,40 +3,43 @@
 using DiarioAcademia.Dominio.AvaliacaoModule;
 using DiarioAcademia.Infra.AvaliacaoModule.Dao;
 using DiarioAcademia.Infra.AvaliacaoModule.Arquivo;
+using log4net.Core;
+using System;
+using DiarioAcademia.Infra.Shared;
 
 namespace DiarioAcademia.Aplicacao
 {
     public class FeedbackService
     {
         private ProvaDao _dao;
+        private GeradorFeedback _geradorFeedback;
 
-        public FeedbackService(ProvaDao dao)
+        public FeedbackService(ProvaDao dao, GeradorFeedback gerador)
         {
             _dao = dao;
+            _geradorFeedback = gerador;
         }
 
         public void GerarFeedbackAlunos(int mes, int ano)
-        {            
+        {
             List<Prova> provasSemFeedback = _dao.SelecionarProvasPendentesFeedback(mes, ano);
-
-            List<FeedbackProva> feedbacks = new List<FeedbackProva>();
 
             foreach (Prova prova in provasSemFeedback)
             {
-                prova.FeedbackRealizado = true;
+                try
+                {
+                    prova.Feedback = FeedbackEnum.Realizado;
 
-                _dao.Atualizar(prova);
+                    _dao.Atualizar(prova);
 
-                TotalFeedbackRealizados++;
+                    FeedbackProva feedback = new FeedbackProva(prova, new AvaliadorProva());
 
-                FeedbackProva feedback = new FeedbackProva(prova, new AvaliadorProva());
-
-                feedbacks.Add(feedback);
+                    _geradorFeedback.SalvarPdf(feedback);
+                }
+                catch (DaoException ex)
+                {                    
+                }
             }
-
-            GeradorFeedback _geradorFeedback = new GeradorFeedback();
-
-            _geradorFeedback.SalvarPdf(feedbacks);
         }
 
         public int TotalFeedbackRealizados { get; private set; }

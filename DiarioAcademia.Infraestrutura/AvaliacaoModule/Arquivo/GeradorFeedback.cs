@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DiarioAcademia.Infra.AvaliacaoModule.Arquivo
 {
-    public class GeradorFeedback : IRepositorioFeedback
+    public class GeradorFeedback
     {
-        public void SalvarPdf(List<FeedbackProva> feedbacks)
+        public virtual void SalvarPdf(FeedbackProva feedback)
         {
         }
     }
