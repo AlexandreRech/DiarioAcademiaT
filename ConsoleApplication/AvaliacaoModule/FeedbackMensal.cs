@@ -16,11 +16,26 @@ namespace DiarioAcademia.Dominio.AvaliacaoModule
         private int _ano;
 
 
-        public FeedbackMensal(int mes, int ano, List<Prova> provas)
+        public FeedbackMensal(int mes, int ano, List<Prova> provas, AvaliadorProva avaliador)
         {
             this._mes = DateTimeFormatInfo.CurrentInfo.GetMonthName(mes);
             this._ano = ano;
             this._provas = provas;
+            this._avaliador = avaliador;
+        }
+
+        public double CalcularMedia()
+        {
+            double total = 0;
+
+            foreach (Prova prova in _provas)
+            {
+                _avaliador.Avaliar(prova);
+
+                total += _avaliador.ObtemMedia(); 
+            }
+
+            return total / _provas.Count;
         }
 
         public string NomeRelatorio()

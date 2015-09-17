@@ -16,7 +16,8 @@ namespace DiarioAcademia.Aplicacao.Tests
     [TestClass]
     public class FeedbackServiceTest
     {
-        [TestMethod()]
+        
+        [TestMethod]
         public void Deveria_mudar_feedback_das_provas_para_realizado()
         {
             //arrange 
@@ -152,7 +153,44 @@ namespace DiarioAcademia.Aplicacao.Tests
             provaDaoFalso.Verify(x => x.CancelarFeedback(provas));
         }
 
+        [TestMethod]
+        public void Deveria_calcular_media_feedback_mensal_provas()
+        {
+            //arrange 
+            int mes = DateTime.Now.Month;
+            int ano = DateTime.Now.Year;
 
+            Prova prova1 = new ProvaDataBuilder().Sobre("Design Patterns").NaData(DateTime.Now)
+                .ComNotaDe(new Aluno(1, "Rech"), 10)
+                .ComNotaDe(new Aluno(2, "Wesley"), 10)
+                .ComNotaDe(new Aluno(3, "Guilherme"), 10)
+                .Build();
+
+            Prova prova2 = new ProvaDataBuilder().Sobre("Herança").NaData(DateTime.Now)
+               .ComNotaDe(new Aluno(1, "Rech"), 8)
+               .ComNotaDe(new Aluno(2, "Wesley"), 8)
+               .ComNotaDe(new Aluno(3, "Guilherme"), 8)
+               .Build();
+
+            List<Prova> provas = new List<Prova> { prova1, prova2 };
+
+            Mock<ProvaDao> provaDaoFalso = new Mock<ProvaDao>();
+            provaDaoFalso.Setup(x => x.SelecionarProvasPendentesFeedback(mes, ano))
+                .Returns(new List<Prova> { prova1, prova2 });
+
+            FeedbackMensal feedbackMensal = null;
+
+            Mock<GeradorFeedback> geradorFalso = new Mock<GeradorFeedback>();
+            geradorFalso.Setup(x => x.SalvarPdf(It.IsAny<FeedbackMensal>()))
+                .Callback<FeedbackMensal>(x => feedbackMensal = x);
+
+            //action
+            FeedbackService feedback = new FeedbackService(provaDaoFalso.Object, geradorFalso.Object);
+            feedback.GerarFeedbackAlunos(mes, ano);            
+
+            //assert
+            feedbackMensal.CalcularMedia().Should().Be(9);
+        }
        
     }
 }
