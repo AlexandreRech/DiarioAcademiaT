@@ -19,6 +19,8 @@ namespace DiarioAcademia.Dominio.AvaliacaoModule
             Aluno.ReceberAvaliacao(this);
         }
 
+        public int Id { get; set; }
+
         public Aluno Aluno
         {
             get;

@@ -19,7 +19,7 @@ namespace DiarioAcademia.Dominio.AvaliacaoModule
 
         public int Id { get; set; }
 
-        public GabaritoProva Gabarito { get; private set; }
+        public GabaritoProva Gabarito { get; set; }
 
         public DateTime Data { get; set; }
 

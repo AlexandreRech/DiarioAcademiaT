@@ -36,6 +36,12 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Dao
 
         public void Atualizar(Prova prova)
         {
+            Prova provaEncontrada = _provas.Find(x => x.Id == prova.Id);
+
+            provaEncontrada.Assunto = prova.Assunto;
+            provaEncontrada.Data = prova.Data;
+            provaEncontrada.Feedback = prova.Feedback;
+            provaEncontrada.Gabarito = prova.Gabarito;            
         }       
     }
 }

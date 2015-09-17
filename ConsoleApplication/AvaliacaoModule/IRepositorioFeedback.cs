@@ -8,6 +8,6 @@ namespace DiarioAcademia.Dominio.AvaliacaoModule
 {
     public interface IRepositorioFeedback
     {
-        void SalvarPdf(FeedbackProva feedback);
+        void SalvarPdf(FeedbackMensal feedback);
     }
 }

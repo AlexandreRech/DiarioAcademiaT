@@ -4,14 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-
+using System.Linq;
 
 namespace DiarioAcademia.Infra.AvaliacaoModule.Dao
 {
     public class ProvaDao
     {
-        private DbTransaction _transacao;
-
         public virtual List<Prova> SelecionarProvasPendentesFeedback(int mes, int ano)
         {
             string sqlProvas = "SELECT ID, DATA, ASSUNTO, FEEDBACK_REALIZADO, GABARITO FROM TBPROVA " + 
@@ -35,20 +33,50 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Dao
 
             return provas;
         }
+      
+        public virtual void CancelarFeedback(List<Prova> provas)
+        {
+            List<int> ids = provas.Select(x => x.Id).ToList();
+
+            var parms = ids.Select((s, i) => "p" + i.ToString()).ToArray();
+
+            string sql = string.Format("UPDATE TBPROVA SET FEEDBACK_REALIZADO=0 WHERE ID IN ({0})", ConfiguraFiltroIn(parms));
+
+            var parmsInClause = new List<object>();
+
+            for (int i = 0; i < parms.Length; i++)
+            {
+                parmsInClause.Add(parms[i]);
+                parmsInClause.Add(ids[i]);
+            }
+
+            Db.Update(sql, parmsInClause.ToArray());
+        }      
 
         public void Salvar(Prova prova)
         {
-            string sql = "INSERT INTO TBPROVA (DATA, ASSUNTO, FEEDBACK_REALIZADO, GABARITO) VALUES ({0}DATA, {0}ASSUNTO, {0}FEEDBACK_REALIZADO, {0}GABARITO)";
+            string sqlProvas = "INSERT INTO TBPROVA (DATA, ASSUNTO, FEEDBACK_REALIZADO, GABARITO) VALUES ({0}DATA, {0}ASSUNTO, {0}FEEDBACK_REALIZADO, {0}GABARITO)";
 
-            prova.Id = Db.Insert(sql, Parametros(prova), _transacao);
+            prova.Id = Db.Insert(sqlProvas, ParametrosProva(prova));
+
+            string sqlNotas = "INSERT INTO TBNOTA (ID_PROVA, ID_ALUNO, VALOR) VALUES ({0}ID_PROVA, {0}ID_ALUNO, {0}VALOR) ";
+
+            foreach (NotaProva nota in prova.Notas)
+            {
+                nota.Prova = prova;
+
+                Db.Insert(sqlNotas, ParametrosNota(nota));
+            }
         }
 
         public virtual void Atualizar(Prova prova)
         {
             string sql = "UPDATE TBPROVA SET DATA={0}DATA, ASSUNTO={0}ASSUNTO, FEEDBACK_REALIZADO={0}FEEDBACK_REALIZADO, GABARITO={0}GABARITO WHERE ID={0}ID";
             
-            Db.Update(sql, Parametros(prova), _transacao);
+            Db.Update(sql, ParametrosProva(prova));
         }
+
+         
 
         #region métodos privados
 
@@ -58,7 +86,7 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Dao
 
             foreach (Prova prova in provas)
             {
-                List<NotaProva> notas = Db.GetAll(sqlNotasAlunos, ConverterNotaAluno, new object[] { "PROVA_ID", prova.Id });
+                List<NotaProva> notas = Db.GetAll(sqlNotasAlunos, ConverterNota, new object[] { "PROVA_ID", prova.Id });
 
                 foreach (NotaProva nota in notas)
                 {
@@ -67,7 +95,7 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Dao
             }
         }
        
-        private object[] Parametros(Prova prova)
+        private object[] ParametrosProva(Prova prova)
         {
             return new Object[]
             {
@@ -76,6 +104,17 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Dao
                 "ASSUNTO", prova.Assunto, 
                 "FEEDBACK_REALIZADO", (int)prova.Feedback, 
                 "GABARITO", prova.Gabarito == null ? "" : prova.Gabarito.ToString()
+            };
+        }
+
+        private object[] ParametrosNota(NotaProva nota)
+        {
+            return new Object[]
+            {
+                "ID", nota.Id, 
+                "ID_PROVA", nota.Prova.Id, 
+                "ID_ALUNO", nota.Aluno.Id,
+                "VALOR", nota.Valor
             };
         }
 
@@ -98,7 +137,7 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Dao
             return prova;
         }
 
-        private NotaProva ConverterNotaAluno(IDataReader reader)
+        private NotaProva ConverterNota(IDataReader reader)
         {
             int idNota = Convert.ToInt32(reader["ID_NOTA"]);
             double valorNota = Convert.ToDouble(reader["VALOR_NOTA"]);
@@ -111,8 +150,19 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Dao
             return nota;
         }
 
+        private static string ConfiguraFiltroIn(string[] parms)
+        {
+            var inclause = string.Join(",", parms);
+
+            inclause = inclause.Replace(",", ", {0}");
+
+            if (!inclause.StartsWith("{0}"))
+                inclause = "{0}" + inclause;
+
+            return inclause;
+        }
+
         #endregion
-
-
+              
     }
 }

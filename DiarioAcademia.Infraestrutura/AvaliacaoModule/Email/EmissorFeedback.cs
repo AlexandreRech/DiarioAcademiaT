@@ -9,7 +9,7 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Email
 {
     public class EmissorFeedback
     {
-        public void Enviar(List<FeedbackProva> feedbacks)
+        public void Enviar(List<FeedbackMensal> feedbacks)
         {
         }
     }

@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AvaliacaoModule\FeedbackEnum.cs" />
-    <Compile Include="AvaliacaoModule\FeedbackProva.cs" />
+    <Compile Include="AvaliacaoModule\FeedbackMensal.cs" />
     <Compile Include="AvaliacaoModule\IRepositorioFeedback.cs" />
     <Compile Include="AvaliacaoModule\IRepositorioProva.cs" />
     <Compile Include="AvaliacaoModule\MediaNota.cs" />

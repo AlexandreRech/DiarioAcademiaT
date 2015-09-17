@@ -22,23 +22,26 @@ namespace DiarioAcademia.Aplicacao
 
         public void GerarFeedbackAlunos(int mes, int ano)
         {
-            List<Prova> provasSemFeedback = _dao.SelecionarProvasPendentesFeedback(mes, ano);
+            List<Prova> provas = _dao.SelecionarProvasPendentesFeedback(mes, ano);
 
-            foreach (Prova prova in provasSemFeedback)
+            foreach (Prova prova in provas)
             {
-                try
-                {
-                    prova.Feedback = FeedbackEnum.Realizado;
+                prova.Feedback = FeedbackEnum.Realizado;
 
-                    _dao.Atualizar(prova);
+                TotalFeedbackRealizados++;
 
-                    FeedbackProva feedback = new FeedbackProva(prova, new AvaliadorProva());
+                _dao.Atualizar(prova);
+            }
 
-                    _geradorFeedback.SalvarPdf(feedback);
-                }
-                catch (DaoException ex)
-                {                    
-                }
+            try
+            {
+                FeedbackMensal feedbackMensal = new FeedbackMensal(mes, ano, provas);
+
+                _geradorFeedback.SalvarPdf(feedbackMensal);
+            }
+            catch
+            {
+                _dao.CancelarFeedback(provas);                
             }
         }
 
