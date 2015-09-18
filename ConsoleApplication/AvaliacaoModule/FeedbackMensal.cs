@@ -14,6 +14,7 @@ namespace DiarioAcademia.Dominio.AvaliacaoModule
         private const string DIRETORIO_FEEDBACKS = @"C:\temp\diario academia";
         private string _mes;
         private int _ano;
+        private double _mediaMensal;
 
 
         public FeedbackMensal(int mes, int ano, List<Prova> provas, AvaliadorProva avaliador)
@@ -24,7 +25,7 @@ namespace DiarioAcademia.Dominio.AvaliacaoModule
             this._avaliador = avaliador;
         }
 
-        public double CalcularMedia()
+        public void AvaliarProvas()
         {
             double total = 0;
 
@@ -32,19 +33,19 @@ namespace DiarioAcademia.Dominio.AvaliacaoModule
             {
                 _avaliador.Avaliar(prova);
 
-                total += _avaliador.ObtemMedia(); 
+                total += _avaliador.ObtemMedia();
             }
 
-            return total / _provas.Count;
+            _mediaMensal = total / _provas.Count;
         }
 
         public string NomeRelatorio()
-        {           
+        {
             return string.Format("Feedback mensal das provas realizadas em {0} de {1}", _mes, _ano);
         }
 
         public string NomeArquivo()
-        {          
+        {
             string nomeArquivo = string.Format("feedback-provas-{0}-{1}.pdf", _mes, _ano);
 
             int contador = 0;
@@ -59,6 +60,8 @@ namespace DiarioAcademia.Dominio.AvaliacaoModule
 
         public List<Prova> Provas { get { return _provas; } }
 
+        public double MediaMensal { get { return _mediaMensal; } }
+
         public string Diretorio
         {
             get
@@ -69,6 +72,13 @@ namespace DiarioAcademia.Dominio.AvaliacaoModule
                 return DIRETORIO_FEEDBACKS;
             }
         }
+    }
 
+    public class FileWrapper
+    {
+        public bool Exists(string path)
+        {
+            return File.Exists(path);
+        }
     }
 }

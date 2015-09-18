@@ -11,7 +11,7 @@ namespace DiarioAcademia.Dominio.AvaliacaoModule
 
         private List<QuestaoGabarito> _questoes = new List<QuestaoGabarito>();
 
-        public GabaritoProva(string respostas) 
+        public GabaritoProva(string respostas)
             : this(respostas.ToCharArray())
         {
         }

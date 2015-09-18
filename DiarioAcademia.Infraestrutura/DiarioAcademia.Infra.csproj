@@ -46,7 +46,6 @@
     <Compile Include="AvaliacaoModule\Arquivo\GeradorFeedback.cs" />
     <Compile Include="Shared\DaoException.cs" />
     <Compile Include="Shared\Db.cs" />
-    <Compile Include="AvaliacaoModule\Email\EmissorFeedback.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AvaliacaoModule\Dao\ProvaDao.cs" />
     <Compile Include="AvaliacaoModule\Dao\ProvaDaoFalso.cs" />

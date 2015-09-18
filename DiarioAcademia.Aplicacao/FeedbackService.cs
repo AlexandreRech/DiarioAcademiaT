@@ -39,6 +39,8 @@ namespace DiarioAcademia.Aplicacao
 
                 FeedbackMensal feedbackMensal = new FeedbackMensal(mes, ano, provas, avaliador);
 
+                feedbackMensal.AvaliarProvas();
+
                 _geradorFeedback.SalvarPdf(feedbackMensal);
             }
             catch

@@ -7,9 +7,6 @@ using DiarioAcademia.Infra.AvaliacaoModule.Dao;
 using System.Collections.Generic;
 using Moq;
 using DiarioAcademia.Infra.AvaliacaoModule.Arquivo;
-using System.Data.Common;
-using System.Data.SqlClient;
-using DiarioAcademia.Infra.Shared;
 
 namespace DiarioAcademia.Aplicacao.Tests
 {
@@ -188,9 +185,11 @@ namespace DiarioAcademia.Aplicacao.Tests
             FeedbackService feedback = new FeedbackService(provaDaoFalso.Object, geradorFalso.Object);
             feedback.GerarFeedbackAlunos(mes, ano);            
 
-            //assert
-            feedbackMensal.CalcularMedia().Should().Be(9);
+            //assert            
+            feedbackMensal.MediaMensal.Should().Be(9);
         }
+
+       
        
     }
 }

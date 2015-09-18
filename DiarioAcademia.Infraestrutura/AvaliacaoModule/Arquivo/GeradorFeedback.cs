@@ -14,6 +14,7 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Arquivo
     {
         public virtual void SalvarPdf(FeedbackMensal feedback)
         {
+
             FileStream fs = new FileStream(feedback.NomeArquivo(), FileMode.Create);
 
             Document document = new Document(PageSize.A4, 25, 25, 30, 30);
@@ -39,8 +40,11 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Arquivo
             {
                 PdfPTable table = new PdfPTable(2);
 
-                PdfPCell cell = new PdfPCell(new Phrase(prova.Assunto));
+                string tituloDaProva = "Prova sobre: " + prova.Assunto;
+
+                PdfPCell cell = new PdfPCell(new Phrase(tituloDaProva));
                 cell.Colspan = 2;
+                cell.BackgroundColor = BaseColor.LIGHT_GRAY;
                 cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
                 table.AddCell(cell);
 
@@ -61,7 +65,9 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Arquivo
 
         private static void ConfigurarCabecalho(FeedbackMensal feedback, Document document)
         {
-            document.Add(new Paragraph(feedback.NomeRelatorio()));
+            document.Add(new Paragraph(feedback.NomeRelatorio()) { Alignment = 1 });
+
+            document.Add(new Paragraph("Média mensal: " + feedback.MediaMensal) { Alignment = 1 });
 
             document.Add(new Paragraph(" "));
         }
