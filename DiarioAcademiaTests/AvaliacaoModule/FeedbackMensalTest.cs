@@ -23,14 +23,14 @@ namespace DiarioAcademia.Dominio.AvaliacaoModule.Tests
                 .Be(feedbackMensal.Diretorio + "\\" + "feedback-provas-janeiro-2015.pdf");
         }
 
-        [TestMethod]
-        public void Deveria_gerar_nome_arquivo_com_controle_duplicacao_feedback_mensal()
-        {
-            //action and assert
-            FeedbackMensal feedbackMensal = new FeedbackMensal(1, 2015, null, null);
+        //[TestMethod]
+        //public void Deveria_gerar_nome_arquivo_com_controle_duplicacao_feedback_mensal()
+        //{
+        //    //action and assert
+        //    FeedbackMensal feedbackMensal = new FeedbackMensal(1, 2015, null, null);
 
-            feedbackMensal.NomeArquivo()
-                .Should().Be(feedbackMensal.Diretorio + "\\" + "feedback-provas-janeiro-2015(1).pdf");
-        }
+        //    feedbackMensal.NomeArquivo()
+        //        .Should().Be(feedbackMensal.Diretorio + "\\" + "feedback-provas-janeiro-2015(1).pdf");
+        //}
     }
 }

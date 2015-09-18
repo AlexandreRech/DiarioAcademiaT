@@ -47,9 +47,8 @@
     <Compile Include="AvaliacaoModule\FeedbackEnum.cs" />
     <Compile Include="AvaliacaoModule\FeedbackMensal.cs" />
     <Compile Include="AvaliacaoModule\MediaNota.cs" />
-    <Compile Include="AvaliacaoModule\NenhumaProvaEncontradaException.cs" />
     <Compile Include="AvaliacaoModule\QuestaoGabarito.cs" />
-    <Compile Include="AlunoModule\Aluno.cs" />
+    <Compile Include="AvaliacaoModule\Aluno.cs" />
     <Compile Include="AvaliacaoModule\GabaritoProva.cs" />
     <Compile Include="AvaliacaoModule\Prova.cs" />
     <Compile Include="AvaliacaoModule\NotaProva.cs" />
@@ -57,9 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AulaModule\" />
     <Folder Include="FrequenciaModule\" />
-    <Folder Include="TurmaModule\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

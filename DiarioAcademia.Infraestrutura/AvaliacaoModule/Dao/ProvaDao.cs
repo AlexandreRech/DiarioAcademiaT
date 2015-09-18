@@ -8,8 +8,8 @@ using System.Linq;
 
 namespace DiarioAcademia.Infra.AvaliacaoModule.Dao
 {
-    public class ProvaDao
-    {
+    public class ProvaDao : IRepositorioDeProvas
+    {      
         public virtual List<Prova> SelecionarProvasPendentesFeedback(int mes, int ano)
         {
             string sqlProvas = "SELECT ID, DATA, ASSUNTO, FEEDBACK_REALIZADO, GABARITO FROM TBPROVA " + 
@@ -76,7 +76,7 @@ namespace DiarioAcademia.Infra.AvaliacaoModule.Dao
             Db.Update(sql, ParametrosProva(prova));
         }
 
-         
+        
 
         #region métodos privados
 

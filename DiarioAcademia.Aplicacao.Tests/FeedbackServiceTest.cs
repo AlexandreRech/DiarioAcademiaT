@@ -179,7 +179,7 @@ namespace DiarioAcademia.Aplicacao.Tests
 
             Mock<GeradorFeedback> geradorFalso = new Mock<GeradorFeedback>();
             geradorFalso.Setup(x => x.SalvarPdf(It.IsAny<FeedbackMensal>()))
-                .Callback<FeedbackMensal>(x => feedbackMensal = x);
+                .Callback<FeedbackMensal>(fm => feedbackMensal = fm);
 
             //action
             FeedbackService feedback = new FeedbackService(provaDaoFalso.Object, geradorFalso.Object);

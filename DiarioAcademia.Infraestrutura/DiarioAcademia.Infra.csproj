@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AvaliacaoModule\Arquivo\GeradorFeedback.cs" />
+    <Compile Include="AvaliacaoModule\Dao\IRepositorioDeProvas.cs" />
     <Compile Include="Shared\DaoException.cs" />
     <Compile Include="Shared\Db.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +65,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FrequenciaModule\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
