@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Microsoft.QualityTools.Testing.Fakes;
-using System.IO.Fakes;
+
 
 namespace DiarioAcademia.Dominio.AvaliacaoModule.Tests
 {
